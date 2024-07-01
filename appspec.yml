@@ -1,0 +1,18 @@
+version: 0.0
+os: linux
+files:
+  - source: /target/unicorn-web-project.war
+    destination: /usr/local/tomcat/webapps/
+hooks:
+  BeforeInstall:
+    - location: scripts/install.sh
+      timeout: 300
+      runas: root
+  ApplicationStart:
+    - location: scripts/start.sh
+      timeout: 300
+      runas: root
+  ApplicationStop:
+    - location: scripts/stop.sh
+      timeout: 300
+      runas: root
